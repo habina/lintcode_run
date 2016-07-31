@@ -17,7 +17,7 @@ public class longest_common_substring {
             dp[i] = new int[B.length()];
         }
         
-        // dp part. dp[i][j] = dp[i - 1][j - 1] + (a[i] == b[j]) ? 1 : 0
+        // dp part. dp[i][j] = (a[i] == b[j]) ? dp[i - 1][j - 1] + 1: 0
         int max = 0;
         for (int i = 0; i < A.length(); i++) {
             for (int j = 0; j < B.length(); j++) {
