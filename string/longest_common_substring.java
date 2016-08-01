@@ -47,7 +47,7 @@ public class longest_common_substring {
         return max;
     }
 
-//    TLE version, runtime: n * m ^ 2
+//    TLE version, runtime: n * 2 ^ m
 //    /**
 //     * @param A, B: Two string.
 //     * @return: the length of the longest common substring.
