@@ -18,6 +18,7 @@ public class longest_common_substring {
         }
         
         // dp part. dp[i][j] = (a[i] == b[j]) ? dp[i - 1][j - 1] + 1: 0
+        // def of dp[i][j], max length of common substring between A[0:i] and B[0:j]
         int max = 0;
         for (int i = 0; i < A.length(); i++) {
             for (int j = 0; j < B.length(); j++) {
