@@ -10,7 +10,7 @@ public class merge_sorted_array {
      */
     public static void mergeSortedArray(int[] A, int m, int[] B, int n) {
         // runtime: m + n, merge reversely
-        if (m == 0 || n == 0) {
+        if (m == 0 && n == 0) {
             return;
         }
         int i = m - 1;
