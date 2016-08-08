@@ -26,9 +26,9 @@ public class search_insert_position {
             }
         }
         
-        if (target < A[begin]) {
+        if (target <= A[begin]) {
             return begin;
-        } else if (target < A[end]) {
+        } else if (target <= A[end]) {
             return end;
         } else {
             return end + 1;
