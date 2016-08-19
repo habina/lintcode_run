@@ -10,7 +10,7 @@ public class delete_digits {
      *@return: A string
      */
     public static String DeleteDigits(String A, int k) {
-        // runtime: n
+        // runtime: n + k
         // find first position that is decreasing from left to right
         Stack<Integer> stack = new Stack<Integer>();
         int deleted = 0;
