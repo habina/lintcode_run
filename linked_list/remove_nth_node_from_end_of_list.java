@@ -40,8 +40,9 @@ public class remove_nth_node_from_end_of_list {
         }
         
         slowPrev.next = slow.next;
+        // case where delete the head node
         if (head == slow) {
-            return slowPrev.next;
+            return slow.next;
         }
         return head;
     }
