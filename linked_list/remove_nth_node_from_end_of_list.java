@@ -41,7 +41,7 @@ public class remove_nth_node_from_end_of_list {
         
         slowPrev.next = slow.next;
         if (head == slow) {
-            return slowPrev;
+            return slowPrev.next;
         }
         return head;
     }
