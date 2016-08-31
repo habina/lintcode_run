@@ -6,76 +6,104 @@ import java.util.Arrays;
 public class subsets {
 
     /**
-     * @param S: A set of numbers.
+     * @param S:
+     *            A set of numbers.
      * @return: A list of lists. All valid subsets.
      */
     public static ArrayList<ArrayList<Integer>> subsets(int[] nums) {
-        // iterative way
-        
+        // recursive backtracking way
         Arrays.sort(nums);
         ArrayList<ArrayList<Integer>> res = new ArrayList<ArrayList<Integer>>();
-        
-        for (int i = 0; i < nums.length; i++) {
-            int cur = nums[i];
-            ArrayList<ArrayList<Integer>> withoutCur = new ArrayList<ArrayList<Integer>>();
-            
-            for (ArrayList<Integer> list : res) {
-                withoutCur.add(new ArrayList<Integer>(list));
-            }
-            
-            // add cur to withoutCur
-            for (ArrayList<Integer> list : withoutCur) {
-                list.add(cur);
-            }
-            
-            // add cur as a list itself
-            ArrayList<Integer> withCur = new ArrayList<Integer>();
-            withCur.add(cur);
-            res.add(withCur);
-            // add all withoutCur
-            res.addAll(withoutCur);
-        }
-        
-        // add empty set
-        res.add(new ArrayList<Integer>());
-
+        ArrayList<Integer> row = new ArrayList<Integer>();
+        subsets(nums, 0, row, res);
         return res;
     }
 
-//    /**
-//     * @param S: A set of numbers.
-//     * @return: A list of lists. All valid subsets.
-//     */
-//    public static ArrayList<ArrayList<Integer>> subsets(int[] nums) {
-//        // recursive way
-//        Arrays.sort(nums);
-//        ArrayList<ArrayList<Integer>> res = subsets(nums, 0);
-//        return res;
-//    }
-//
-//    public static ArrayList<ArrayList<Integer>> subsets(int[] nums, int start) {
-//        // recursive way
-//        ArrayList<ArrayList<Integer>> res = new ArrayList<ArrayList<Integer>>();
-//        if (start == nums.length) {
-//            res.add(new ArrayList<Integer>());
-//            return res;
-//        }
-//        
-//        int first = nums[start];
-//        ArrayList<ArrayList<Integer>> withoutFirst = subsets(nums, start + 1);
-//        for (ArrayList<Integer> list : withoutFirst) {
-//            ArrayList<Integer> copy = new ArrayList<Integer>();
-//            copy.add(first);
-//            copy.addAll(list);
-//            res.add(copy);
-//        }
-//        res.addAll(withoutFirst);
-//        
-//        return res;
-//    }
+    public static void subsets(int[] nums, int start, ArrayList<Integer> row,
+        ArrayList<ArrayList<Integer>> res) {
+
+        res.add(new ArrayList<Integer>(row));
+
+        for (int i = start; i < nums.length; i++) {
+            row.add(nums[i]);
+            subsets(nums, i + 1, row, res);
+            row.remove(row.size() - 1);
+        }
+    }
+
+    // /**
+    // * @param S: A set of numbers.
+    // * @return: A list of lists. All valid subsets.
+    // */
+    // public static ArrayList<ArrayList<Integer>> subsets(int[] nums) {
+    // // iterative way
+    //
+    // Arrays.sort(nums);
+    // ArrayList<ArrayList<Integer>> res = new ArrayList<ArrayList<Integer>>();
+    //
+    // for (int i = 0; i < nums.length; i++) {
+    // int cur = nums[i];
+    // ArrayList<ArrayList<Integer>> withoutCur = new
+    // ArrayList<ArrayList<Integer>>();
+    //
+    // for (ArrayList<Integer> list : res) {
+    // withoutCur.add(new ArrayList<Integer>(list));
+    // }
+    //
+    // // add cur to withoutCur
+    // for (ArrayList<Integer> list : withoutCur) {
+    // list.add(cur);
+    // }
+    //
+    // // add cur as a list itself
+    // ArrayList<Integer> withCur = new ArrayList<Integer>();
+    // withCur.add(cur);
+    // res.add(withCur);
+    // // add all withoutCur
+    // res.addAll(withoutCur);
+    // }
+    //
+    // // add empty set
+    // res.add(new ArrayList<Integer>());
+    //
+    // return res;
+    // }
+
+    // /**
+    // * @param S: A set of numbers.
+    // * @return: A list of lists. All valid subsets.
+    // */
+    // public static ArrayList<ArrayList<Integer>> subsets(int[] nums) {
+    // // recursive way
+    // Arrays.sort(nums);
+    // ArrayList<ArrayList<Integer>> res = subsets(nums, 0);
+    // return res;
+    // }
+    //
+    // public static ArrayList<ArrayList<Integer>> subsets(int[] nums, int
+    // start) {
+    // // recursive adding way
+    // ArrayList<ArrayList<Integer>> res = new ArrayList<ArrayList<Integer>>();
+    // if (start == nums.length) {
+    // res.add(new ArrayList<Integer>());
+    // return res;
+    // }
+    //
+    // int first = nums[start];
+    // ArrayList<ArrayList<Integer>> withoutFirst = subsets(nums, start + 1);
+    // for (ArrayList<Integer> list : withoutFirst) {
+    // ArrayList<Integer> copy = new ArrayList<Integer>();
+    // copy.add(first);
+    // copy.addAll(list);
+    // res.add(copy);
+    // }
+    // res.addAll(withoutFirst);
+    //
+    // return res;
+    // }
 
     public static void main(String[] args) {
-        int[] a = {1, 2, 3};
+        int[] a = { 1, 2, 3 };
         System.out.println(subsets(a));
     }
 
