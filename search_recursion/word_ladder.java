@@ -62,12 +62,13 @@ public class word_ladder {
    public static List<String> getNextWords(String word, Set<String> dict) {
        List<String> res = new ArrayList<String>();
        for (int j = 0; j < word.length(); j++) {
-           StringBuilder sb = new StringBuilder();
-           sb.append(word);
+           char[] array = word.toCharArray();
            for (int i = 'a'; i <= 'z'; i++) {
-               sb.replace(j, j + 1, String.valueOf((char) i));
-               if (dict.contains(sb.toString())) {
-                   res.add(sb.toString());
+               array[j] = ((char) i);
+               String next = new String(array);
+               if (dict.contains(next)){
+                   res.add(next);
+                   dict.remove(next);
                }
            }
        }
