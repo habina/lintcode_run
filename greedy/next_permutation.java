@@ -1,6 +1,7 @@
 package greedy;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class next_permutation {
 
@@ -52,15 +53,13 @@ public class next_permutation {
     public static void main(String[] args) {
         int[] nums = { 1, 3, 2, 3 };
         int[] nums2 = { 4, 3, 2, 1 };
+        int[] nums3 = { 1, 2, 3, 1, 2, 3, 1, 2, 3 };
         int[] res = nextPermutation(nums);
         int[] res1 = nextPermutation(nums2);
-        for (int i : res) {
-            System.out.print(i + " ");
-        }
-        System.out.println();
-        for (int i : res1) {
-            System.out.print(i + " ");
-        }
+        int[] res2 = nextPermutation(nums3);
+        System.out.println(Arrays.toString(res));
+        System.out.println(Arrays.toString(res1));
+        System.out.println(Arrays.toString(res2));
     }
 
 }
