@@ -41,6 +41,7 @@ public class OptimalAccountBalancing {
         // debts
         // if mask = 110, means debts[0] can't be used for subset sum
         int mask = (1 << atMost) - 1;
+        System.out.println(debts);
         int[] group = new int[1];
         subsetSum(mask, 0, group, debts);
 
@@ -53,7 +54,7 @@ public class OptimalAccountBalancing {
             return;
         }
 
-        for (int i = mask; i != 0; i=((i-1) & mask)) {
+        for (int i = mask; i != 0; i = ((i - 1) & mask)) {
             System.out.println(Integer.toBinaryString(i));
             if (posSum(i, debts) == 0) {
                 subsetSum(mask - i, pair + 1, group, debts);
