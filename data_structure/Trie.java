@@ -59,7 +59,20 @@ public class Trie {
         } else {
             return nodes[index].contains(word.substring(1));
         }
-        
+    }
+    
+    public boolean contains(char c) {
+        if (c < 97 || c > 122) {
+            return false;
+        }
+        return nodes[c - 97] != null;
+    }
+    
+    public Trie get(char c) {
+        if (contains(c)) {
+            return nodes[c - 97];
+        }
+        return null;
     }
     
     public boolean remove(String word) {
