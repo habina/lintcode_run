@@ -14,13 +14,13 @@ public class next_permutation {
     public static int[] nextPermutation(int[] nums) {
         // runtime, n
         int firstDecreaseIndex = -1;
-        int firstLarger = -1;
         for (int i = nums.length - 2; i >= 0; i--) {
             if (nums[i + 1] > nums[i]) {
                 firstDecreaseIndex = i;
                 break;
             }
         }
+        int firstLarger = -1;
         if (firstDecreaseIndex != -1) {
             for (int i = nums.length - 1; i >= 0; i--) {
                 if (nums[i] > nums[firstDecreaseIndex]) {

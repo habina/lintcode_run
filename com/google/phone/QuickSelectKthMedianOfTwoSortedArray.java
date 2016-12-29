@@ -1,6 +1,6 @@
 package com.google.phone;
 
-public class MedianOfTwoSortedArray {
+public class QuickSelectKthMedianOfTwoSortedArray {
 
     /**
      * @param A:
