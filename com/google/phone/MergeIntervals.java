@@ -16,12 +16,13 @@ public class MergeIntervals {
             return intervals;
         }
 
-        List<Interval> sorted = mergeSort(intervals);
         List<Interval> res = new ArrayList<Interval>();
+        
+        List<Interval> sorted = mergeSort(intervals);
         Interval cur = sorted.get(0);
         
         for (int i = 1; i < sorted.size(); i++) {
-            if (sorted.get(i).start <= cur.end) {
+            if (cur.end >= sorted.get(i).start) {
                 cur.end = Math.max(cur.end, sorted.get(i).end);
             } else {
                 res.add(cur);
@@ -33,16 +34,15 @@ public class MergeIntervals {
         return res;
     }
     
-    public List<Interval> mergeSort(List<Interval> lst) {
-        if (lst.size() < 2) {
-            return lst;
+    public List<Interval> mergeSort(List<Interval> intervals) {
+        if (intervals.size() < 2) {
+            return intervals;
         }
         
-        int mid = lst.size() / 2;
-        List<Interval> left = mergeSort(lst.subList(0, mid));
-        List<Interval> right = mergeSort(lst.subList(mid, lst.size()));
+        int mid = intervals.size() / 2;
+        List<Interval> left = mergeSort(intervals.subList(0, mid));
+        List<Interval> right = mergeSort(intervals.subList(mid, intervals.size()));
         List<Interval> res = new ArrayList<Interval>();
-        
         int i = 0;
         int j = 0;
         
