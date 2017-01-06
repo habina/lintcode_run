@@ -13,6 +13,7 @@ public class NthDigit {
             digitLength++;
         }
         
+        // n - 1 is for 0 index base
         base += (n - 1) / digitLength;
         String s = String.valueOf(base);
         
