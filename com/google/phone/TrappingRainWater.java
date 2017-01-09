@@ -1,5 +1,7 @@
 package com.google.phone;
 
+import java.util.Stack;
+
 public class TrappingRainWater {
 
     /**
@@ -37,9 +39,39 @@ public class TrappingRainWater {
 
         return res;
     }
+    
+//    public static int trap(int[] height) {
+//        Stack<Integer> stack = new Stack<Integer>();
+//        if (height.length < 2) {
+//            return 0;
+//        }
+//        stack.push(0);
+//        int total = 0;
+//        
+//        for (int i = 1; i < height.length; i++) {
+//            if (height[i] > height[stack.peek()]) {
+//                int bottomHeight = height[stack.pop()];
+//                // while left is the bottleneck
+//                while (!stack.isEmpty() && height[i] >= height[stack.peek()]) {
+//                    int leftIndex = stack.pop();
+//                    int leftHeight = height[leftIndex];
+//                    total += (leftHeight - bottomHeight) * (i - leftIndex - 1);
+//                    bottomHeight = leftHeight;
+//                }
+//                // right is the bottleneck
+//                if (!stack.isEmpty()) {
+//                    total += (height[i] - bottomHeight) * (i - stack.peek() - 1);
+//                }
+//            }
+//            stack.push(i);
+//        }
+//
+//        return total;
+//    }
 
     public static void main(String[] args) {
-        int[] a = { 100, 0, 100 };
+        int[] a = { 0,1,0,2,1,0,1,3,2,1,2,1 };
+//        System.out.println(trap(a));
         System.out.println(trapRainWater(a));
     }
 

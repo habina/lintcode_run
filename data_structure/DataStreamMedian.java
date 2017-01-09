@@ -17,28 +17,33 @@ public class DataStreamMedian {
         if (nums.length == 0) {
             return res;
         }
-        PriorityQueue<Integer> maxHeap = new PriorityQueue<Integer>();
-        PriorityQueue<Integer> minHeap = new PriorityQueue<Integer>(nums.length, Collections.reverseOrder());
+        // store larger half elements
+        PriorityQueue<Integer> minHeap = new PriorityQueue<Integer>();
+        // store smaller half elements
+        PriorityQueue<Integer> maxHeap = new PriorityQueue<Integer>(nums.length, Collections.reverseOrder());
 
         for (int i = 0; i < nums.length; i++) {
             if (i % 2 == 0) {
-                minHeap.offer(nums[i]);
-            } else {
                 maxHeap.offer(nums[i]);
+            } else {
+                minHeap.offer(nums[i]);
             }
-
-            if (!maxHeap.isEmpty() && !minHeap.isEmpty() && maxHeap.peek() < minHeap.peek()) {
-                int max = maxHeap.poll();
-                int min = minHeap.poll();
-                minHeap.offer(max);
-                maxHeap.offer(min);
+            
+            if (!minHeap.isEmpty() && !maxHeap.isEmpty()) {
+                // need swap, since maxHeap keeps smaller half elements
+                if (minHeap.peek() < maxHeap.peek()) {
+                    int max = maxHeap.poll();
+                    int min = minHeap.poll();
+                    maxHeap.offer(min);
+                    minHeap.offer(max);
+                }
             }
 
             if (minHeap.size() == maxHeap.size()) {
                 // or (minHeap.peek() + maxHeap.peek()) / 2
-                res[i] = minHeap.peek();
+                res[i] = maxHeap.peek();
             } else {
-                res[i] = minHeap.peek();
+                res[i] = maxHeap.peek();
             }
         }
 

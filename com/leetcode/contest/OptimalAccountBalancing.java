@@ -34,32 +34,34 @@ public class OptimalAccountBalancing {
                 debts.add(map.get(key));
             }
         }
-        System.out.println(debts);
+        // System.out.println(debts);
 
         int atMost = debts.size();
         // if atMost = 3, using mask = 111 to represent all debt can use in
         // debts
-        // if mask = 110, means debts[0] can't be used for subset sum
+        // ex: mask = 110, means debts[0] can't be used for subset sum
         int mask = (1 << atMost) - 1;
         System.out.println(debts);
-        int[] group = new int[1];
-        subsetSum(mask, 0, group, debts);
+        int pair = subsetSumPair(mask, 0, debts);
 
-        return atMost - group[0];
+        return atMost - pair;
     }
 
-    public static void subsetSum(int mask, int pair, int[] group, List<Integer> debts) {
+    public static int subsetSumPair(int mask, int pair, List<Integer> debts) {
         if (mask == 0) {
-            group[0] = pair;
-            return;
+            return pair;
         }
 
+        int newPair = pair;
+        // (i-1) & mask is for exclude all pos with bit 0
         for (int i = mask; i != 0; i = ((i - 1) & mask)) {
             System.out.println(Integer.toBinaryString(i));
             if (posSum(i, debts) == 0) {
-                subsetSum(mask - i, pair + 1, group, debts);
+                newPair = Math.max(newPair, subsetSumPair(mask - i, pair + 1, debts));
             }
         }
+
+        return newPair;
     }
 
     // calculate sum for mask, ex 1101, sum all debts except index 1
@@ -239,6 +241,10 @@ public class OptimalAccountBalancing {
         // 2, 5, 2 }, { 3, 7, 1 } };
         int[][] a = { { 2, 0, 5 }, { 3, 4, 4 } };
         System.out.println(minTransfers(a));
+        
+        for (int i = 15; i != 0; i = ((i - 1) )) {
+            System.out.println(Integer.toBinaryString(i));
+        }
     }
 
 }
