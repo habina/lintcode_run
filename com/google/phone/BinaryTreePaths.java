@@ -22,28 +22,26 @@ public class BinaryTreePaths {
      */
     public List<String> binaryTreePaths(TreeNode root) {
         List<String> res = new ArrayList<String>();
-        if (root == null) {
-            return res;
-        }
-        dfs(root, res, String.valueOf(root.val)); 
+        dfs(res, root, "");
         return res;
     }
     
-    public void dfs(TreeNode node, List<String> res, String cur) {
-        if (node == null) {
+    public void dfs(List<String> res, TreeNode root, String cur) {
+        if (root == null) {
+            return;
+        }
+        if (root.left == null && root.right == null) {
+            res.add(cur + root.val);
             return;
         }
         
-        if (node.left == null && node.right == null) {
-            res.add(cur);
-        }
+        cur = cur + root.val + "->";
         
-        if (node.left != null) {
-            dfs(node.left, res, cur + "->" + node.left.val);
+        if (root.left != null) {
+            dfs(res, root.left, cur);
         }
-        
-        if (node.right != null) {
-            dfs(node.right, res, cur + "->" + node.right.val);
+        if (root.right != null) {
+            dfs(res, root.right, cur);
         }
     }
 

@@ -16,32 +16,31 @@ public class BinaryTreeLongestConsecutiveSequence {
         if (root == null) {
             return 0;
         }
-        return dfs(root, 1);
+        return dfs(root, 0);
     }
-
-    public static int dfs(TreeNode node, int lenSoFar) {
-        if (node == null) {
-            return lenSoFar;
+    
+    public static int dfs(TreeNode root, int len) {
+        if (root == null) {
+            return 0;
         }
-        int leftLength = lenSoFar;
-        int rightLength = lenSoFar;
-        if (node.left != null) {
-            if (node.left.val == node.val + 1) {
-                leftLength = dfs(node.left, lenSoFar + 1);
+        int left = 1;
+        int right = 1;
+        if (root.left != null) {
+            if (root.val + 1 == root.left.val) {
+                left = dfs(root.left, len + 1);
             } else {
-                leftLength = Math.max(lenSoFar, dfs(node.left, 1));
+                left = dfs(root.left, 0);
             }
         }
-        if (node.right != null) {
-            if (node.right.val == node.val + 1) {
-                rightLength = dfs(node.right, lenSoFar + 1);
+        if (root.right != null) {
+            if (root.val + 1 == root.right.val) {
+                right = dfs(root.right, len + 1);
             } else {
-                rightLength = Math.max(lenSoFar, dfs(node.right, 1));
+                right = dfs(root.right, 0);
             }
         }
-        lenSoFar = Math.max(leftLength, rightLength);
-
-        return lenSoFar;
+        
+        return Math.max(Math.max(left, right), len);
     }
 
     public static void main(String[] args) {

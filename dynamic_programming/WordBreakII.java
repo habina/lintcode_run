@@ -64,36 +64,6 @@ public class WordBreakII {
             dfs(res, map, key - word.length(), combined);
         }
     }
-    
-//    public static boolean wordBreak(String s, Set<String> wordDict) {
-//        // dp[i] = true stands for s[0:i) can be break
-//        // dp[0] = true
-//        // dp[i] = true iff there exist a 0<=k<i s[0:k) and s[k:i) in dict and dp[k] == true
-//        
-//        boolean[] dp = new boolean[s.length() + 1];
-//        dp[0] = true;
-//        int maxLength = Integer.MIN_VALUE;
-//        for (String word : wordDict) {
-//            maxLength = Math.max(maxLength, word.length());
-//        }
-//        
-//        for (int i = 1; i <= s.length(); i++) {
-//            dp[i] = false;
-//            for (int k = 0; k < i; k++) {
-//                if (i - k > maxLength) {
-//                    continue;
-//                }
-//                
-//                if (dp[k] && wordDict.contains(s.substring(k, i))) {
-//                    dp[i] = true;
-//                    break;
-//                }
-//            }
-//        }
-//        
-//        return dp[s.length()];
-//        
-//    }
 
     public static void main(String[] args) {
         Set<String> dict = new HashSet<String>();
