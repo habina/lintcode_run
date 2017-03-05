@@ -13,7 +13,7 @@ public class gas_station {
         int netGasSum = 0;
         int curGasSum = 0;
         int index = 0;
-        
+
         for (int i = 0; i < gas.length; i++) {
             int curDiff = gas[i] - cost[i];
             netGasSum += curDiff;
@@ -23,17 +23,17 @@ public class gas_station {
                 curGasSum = 0;
             }
         }
-        
+
         if (index >= gas.length || netGasSum < 0) {
             return -1;
         }
-        
+
         return index;
     }
 
     public static void main(String[] args) {
         int[] gas = { 1, 1, 3, 1 };
-        int[] cost = {2,2,1,1};
+        int[] cost = { 2, 2, 1, 1 };
         System.out.println(canCompleteCircuit(gas, cost));
     }
 
