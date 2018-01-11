@@ -69,8 +69,14 @@ Contents:
   - throw exception manually
   - used when program fails the condition and wants to give warning
   - throw the exception from a method to the calling method
+  - throw either checked/ unchecked exception
   - calling method can decide to handle exception or throw to its calling method
 
++ 'throws' keyword
+  - used in the signature of method to indicate that this method might throw one of the listed type exceptions.
+  - required only for checked exception
+  - required only to convince compiler, throws keyword does not prevent abnormal termination of program
+  - provide information to the caller of the method about the exception
   
   
 <a name="Concepts"/>
