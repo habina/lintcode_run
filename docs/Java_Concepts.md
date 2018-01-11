@@ -72,7 +72,7 @@ Contents:
   - throw either checked/ unchecked exception
   - calling method can decide to handle exception or throw to its calling method
 
-+ 'throws' keyword
++ `throws` keyword
   - used in the signature of method to indicate that this method might throw one of the listed type exceptions.
   - required only for checked exception
   - required only to convince compiler, throws keyword does not prevent abnormal termination of program
